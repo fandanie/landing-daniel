@@ -1,103 +1,323 @@
-import Image from "next/image";
+'use client';
+
+import { FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaReact, FaJava, FaNodeJs } from "react-icons/fa";
+import { SiSpringboot, SiNextdotjs, SiTailwindcss, SiPostgresql, SiDocker } from "react-icons/si";
+import emailjs from '@emailjs/browser';
+import toast from 'react-hot-toast';
+import { useRef, useState } from 'react';
+
+
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    const form = useRef<HTMLFormElement>(null);
+    const [loading, setLoading] = useState(false);
+
+
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!form.current) return;
+
+        setLoading(true)
+
+        emailjs
+            .sendForm(
+                'service_h3reujx',      // Service ID
+                'template_9bm10hg',     // Template ID
+                form.current,
+                'LfBchh2IORtkhrcL8'      // Public Key
+            )
+            .then(() => {
+                    toast.success('✅ Mensaje enviado con éxito');
+                    form.current?.reset();
+                })
+            .catch((error) => {
+                    console.error('❌ Error al enviar el mensaje:', error);
+                    toast.error('Hubo un error. Intenta más tarde.');
+                })
+            .finally(() => {
+                setLoading(false);
+                });
+    };
+
+
+    return (
+        <main className="min-h-screen bg-gray-100 text-gray-900 font-sans">
+
+            <header className="bg-white shadow">
+                <div
+                    className="max-w-5xl mx-auto px-4 py-6">
+                    <h1 className="text-2xl font-bold">Daniel Fandiño</h1>
+                    <nav className="mt-4 flex gap-6">
+                        <a href="#about" className="text-gray-600 hover:text-blue-600">Sobre mí</a>
+                        <a href="#projects" className="text-gray-600 hover:text-blue-600">Proyectos</a>
+                        <a href="#contact" className="text-gray-600 hover:text-blue-600">Contacto</a>
+                    </nav>
+
+                </div>
+            </header>
+
+            <section id="about" className="max-w-5xl mx-auto px-4 py-16 flex flex-col md:flex-row items-center gap-6">
+                <img
+                    src="/perfil.png"
+                    alt="Daniel Fandiño"
+                    className="w-40 h-40 rounded-full border-4 border-black-300 shadow-lg"
+                />
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}>
+                    <h2 className="text-2xl font-semibold mb-2">Sobre mí</h2>
+                    <p>
+                        Soy desarrollador web con experiencia en Java, React, micro frontends y Spring Boot. Me apasiona construir soluciones útiles con código limpio y buenas prácticas.
+                    </p>
+                </motion.div>
+            </section>
+
+
+            <section id="projects" className="max-w-5xl mx-auto px-4 py-16 bg-white">
+                <h2 className="text-2xl font-semibold mb-8">Proyectos</h2>
+                <motion.div className="grid md:grid-cols-2 gap-6">
+                    {/* Proyecto 1 */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true }}
+
+                        className="bg-gray-100 rounded-xl p-6 shadow hover:shadow-lg transition">
+                        <h3 className="text-xl font-bold mb-2">CRM de Clientes</h3>
+                        <p className="text-gray-700 mb-2">
+                            Aplicación para gestión de clientes, tareas y notas con login y roles.
+                        </p>
+                        <p className="text-sm text-gray-500">Stack: React, Spring Boot, PostgreSQL</p>
+                    </motion.div>
+
+                    {/* Proyecto 2 */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                        className="bg-gray-100 rounded-xl p-6 shadow hover:shadow-lg transition">
+                        <h3 className="text-xl font-bold mb-2">Marketplace</h3>
+                        <p className="text-gray-700 mb-2">
+                            E-commerce con productos, carrito, favoritos y autenticación.
+                        </p>
+                        <p className="text-sm text-gray-500">Stack: Next.js, Firebase, TailwindCSS</p>
+                    </motion.div>
+
+                    {/* Proyecto 3 */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2 }}
+                        viewport={{ once: true }}
+                        className="bg-gray-100 rounded-xl p-6 shadow hover:shadow-lg transition">
+                        <h3 className="text-xl font-bold mb-2">Dashboard de Métricas</h3>
+                        <p className="text-gray-700 mb-2">
+                            Panel administrativo con KPIs en tiempo real y gestión de usuarios.
+                        </p>
+                        <p className="text-sm text-gray-500">Stack: NestJS, React, Chart.js, Docker</p>
+                    </motion.div>
+                </motion.div>
+            </section>
+
+
+            <section id="skills" className="max-w-5xl mx-auto px-4 py-16">
+                <h2 className="text-2xl font-semibold mb-8">Habilidades</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-center">
+
+                    <motion.div
+                        className="p-4 bg-gray-100 rounded-lg shadow hover:shadow-md transition"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        viewport={{ once: true }}
+                    >
+                        <FaReact className="mx-auto text-4xl text-blue-600 mb-2" />
+                        <p className="text-sm font-medium">React</p>
+                    </motion.div>
+
+                    <motion.div
+                        className="p-4 bg-gray-100 rounded-lg shadow hover:shadow-md transition"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                        viewport={{ once: true }}
+                    >
+                        <FaJava className="mx-auto text-4xl text-blue-600 mb-2" />
+                        <p className="text-sm font-medium">Java</p>
+                    </motion.div>
+
+                    <motion.div
+                        className="p-4 bg-gray-100 rounded-lg shadow hover:shadow-md transition"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: 0.2 }}
+                        viewport={{ once: true }}
+                    >
+                        <SiSpringboot className="mx-auto text-4xl text-blue-600 mb-2" />
+                        <p className="text-sm font-medium">Spring Boot</p>
+                    </motion.div>
+
+                    <motion.div
+                        className="p-4 bg-gray-100 rounded-lg shadow hover:shadow-md transition"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: 0.3 }}
+                        viewport={{ once: true }}
+                    >
+                        <SiNextdotjs className="mx-auto text-4xl text-blue-600 mb-2" />
+                        <p className="text-sm font-medium">Next.js</p>
+                    </motion.div>
+
+                    <motion.div
+                        className="p-4 bg-gray-100 rounded-lg shadow hover:shadow-md transition"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: 0.4 }}
+                        viewport={{ once: true }}
+                    >
+                        <FaNodeJs className="mx-auto text-4xl text-blue-600 mb-2" />
+                        <p className="text-sm font-medium">Node.js</p>
+                    </motion.div>
+
+                    <motion.div
+                        className="p-4 bg-gray-100 rounded-lg shadow hover:shadow-md transition"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: 0.5 }}
+                        viewport={{ once: true }}
+                    >
+                        <SiTailwindcss className="mx-auto text-4xl text-blue-600 mb-2" />
+                        <p className="text-sm font-medium">Tailwind</p>
+                    </motion.div>
+
+                    <motion.div
+                        className="p-4 bg-gray-100 rounded-lg shadow hover:shadow-md transition"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: 0.6 }}
+                        viewport={{ once: true }}
+                    >
+                        <SiPostgresql className="mx-auto text-4xl text-blue-600 mb-2" />
+                        <p className="text-sm font-medium">PostgreSQL</p>
+                    </motion.div>
+
+                    <motion.div
+                        className="p-4 bg-gray-100 rounded-lg shadow hover:shadow-md transition"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: 0.7 }}
+                        viewport={{ once: true }}
+                    >
+                        <SiDocker className="mx-auto text-4xl text-blue-600 mb-2" />
+                        <p className="text-sm font-medium">Docker</p>
+                    </motion.div>
+
+                </div>
+            </section>
+
+            <section id="contact" className="max-w-5xl mx-auto px-4 py-16">
+                <h2 className="text-2xl font-semibold mb-8 text-center">Contáctame</h2>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                    {/* Info de contacto */}
+                    <motion.div
+                        className="bg-white p-6 rounded-lg shadow-md"
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className="flex items-center gap-4 mb-4">
+                            <FaEnvelope className="text-blue-600 text-xl" />
+                            <p className="text-gray-800">daniel.fandino.baez@gmail.com</p>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <FaLinkedin className="text-blue-600 text-xl" />
+                            <a
+                                href="https://www.linkedin.com/in/daniel-fandiño-969229169"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 underline"
+                            >
+                                LinkedIn
+                            </a>
+                        </div>
+                    </motion.div>
+
+                    {/* Formulario */}
+                    <motion.form
+                        ref={form}
+                        onSubmit={sendEmail}
+                        className="grid gap-4 bg-white p-6 rounded-lg shadow-md"
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                    >
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Tu nombre"
+                            required
+                            className="p-3 border border-gray-300 rounded"
+                        />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Tu correo electrónico"
+                            required
+                            className="p-3 border border-gray-300 rounded"
+                        />
+                        <textarea
+                            name="message"
+                            placeholder="Tu mensaje"
+                            required
+                            className="p-3 border border-gray-300 rounded min-h-[120px]"
+                        />
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className={`flex items-center justify-center bg-blue-600 text-white py-3 px-6 rounded transition ${
+                                loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
+                            }`}
+                        >
+                            {loading ? (
+                                <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
+                                    <circle
+                                        className="opacity-25"
+                                        cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        strokeWidth="4"
+                                    ></circle>
+                                    <path
+                                        className="opacity-75"
+                                        fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                                    ></path>
+                                </svg>
+                            ) : (
+                                'Enviar mensaje'
+                            )}
+                        </button>
+
+                    </motion.form>
+                </div>
+            </section>
+
+            <footer className="bg-gray-200 text-center py-4 mt-10">
+                <p>© 2025 Daniel Fandiño. Todos los derechos reservados.</p>
+            </footer>
+        </main>
+    )
 }
