@@ -71,7 +71,7 @@ export default function Home() {
 
                 <section id="about" className="max-w-5xl mx-auto px-4 py-16 flex flex-col md:flex-row items-center gap-6">
                     <img
-                        src="/perfil.png"
+                        src="/perfil.jpg"
                         alt="Daniel Fandiño"
                         className="w-40 h-40 rounded-full border-4 border-black-300 shadow-lg"
                     />
