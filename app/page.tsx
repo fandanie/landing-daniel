@@ -88,8 +88,6 @@ export default function Home() {
                             Proficient in JavaScript, React, Python, Spring Boot, SQL, REST APIs, and support tools like Zendesk, Salesforce.
                             <br />
                             Combines technical troubleshooting with software development to deliver efficient solutions across both support and product teams.
-                            <br />
-                            Thrives in remote-first environments, with a passion for clean code, automation, documentation, and helping users and teams succeed.
                         </p>
                     </motion.div>
                 </section>
