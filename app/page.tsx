@@ -1,7 +1,7 @@
 'use client';
 import Head from 'next/head';
 import { motion } from "framer-motion";
-import { FaLinkedin, FaEnvelope, FaReact, FaJava, FaNodeJs } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaReact, FaJava, FaNodeJs, FaPhone } from "react-icons/fa";
 import { SiSpringboot, SiNextdotjs, SiTailwindcss, SiPostgresql, SiDocker } from "react-icons/si";
 import emailjs from '@emailjs/browser';
 import toast from 'react-hot-toast';
@@ -56,14 +56,15 @@ export default function Home() {
 
             <main className="min-h-screen bg-gray-100 text-gray-900 font-sans">
 
-                <header className="bg-white shadow">
+                <header className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-400 text-white shadow">
                     <div
                         className="max-w-5xl mx-auto px-4 py-6">
-                        <h1 className="text-2xl font-bold">Daniel Fandiño</h1>
+                        <h1 className="text-2xl font-bold text-white">Daniel Fandiño</h1>
+
                         <nav className="mt-4 flex gap-6">
-                            <a href="#about" className="text-gray-600 hover:text-blue-600">Sobre mí</a>
-                            <a href="#projects" className="text-gray-600 hover:text-blue-600">Proyectos</a>
-                            <a href="#contact" className="text-gray-600 hover:text-blue-600">Contacto</a>
+                            <a href="#about" className="text-white-600 hover:text-blue-200">Sobre mí</a>
+                            <a href="#projects" className="text-white-600 hover:text-blue-200">Proyectos</a>
+                            <a href="#contact" className="text-white-600 hover:text-blue-200">Contacto</a>
                         </nav>
 
                     </div>
@@ -82,7 +83,13 @@ export default function Home() {
                         viewport={{ once: true }}>
                         <h2 className="text-2xl font-semibold mb-2">Sobre mí</h2>
                         <p>
-                            Soy desarrollador web con experiencia en Java, React, micro frontends y Spring Boot. Me apasiona construir soluciones útiles con código limpio y buenas prácticas.
+                            Full Stack Developer & Technical Support Engineer with 10+ years of experience in customer-facing technical roles supporting enterprise SaaS platforms, CRM systems, and web technologies.
+                            <br />
+                            Proficient in JavaScript, React, Python, Spring Boot, SQL, REST APIs, and support tools like Zendesk, Salesforce.
+                            <br />
+                            Combines technical troubleshooting with software development to deliver efficient solutions across both support and product teams.
+                            <br />
+                            Thrives in remote-first environments, with a passion for clean code, automation, documentation, and helping users and teams succeed.
                         </p>
                     </motion.div>
                 </section>
@@ -248,6 +255,8 @@ export default function Home() {
                                 <FaEnvelope className="text-blue-600 text-xl" />
                                 <p className="text-gray-800">daniel.fandino.baez@gmail.com</p>
                             </div>
+
+
                             <div className="flex items-center gap-4">
                                 <FaLinkedin className="text-blue-600 text-xl" />
                                 <a
@@ -257,6 +266,16 @@ export default function Home() {
                                     className="text-blue-600 underline"
                                 >
                                     LinkedIn
+                                </a>
+                            </div>
+
+                            <div className="flex items-center gap-4 mt-4">
+                                <FaPhone className="text-blue-600 text-xl" />
+                                <a
+                                    href="tel:+573222373382"
+                                    className="text-gray-800 hover:text-blue-600 transition"
+                                >
+                                    +57 322 237 3382
                                 </a>
                             </div>
                         </motion.div>
