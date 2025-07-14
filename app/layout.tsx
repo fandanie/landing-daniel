@@ -39,7 +39,7 @@ export const metadata = {
     openGraph: {
         title: "Daniel Fandiño | Desarrollador Web",
         description: "Portafolio profesional con proyectos, habilidades y contacto.",
-        url: "https://landing-daniel.vercel.app", // actualiza si tienes dominio propio
+        url: "https://landing-daniel.vercel.app",
         siteName: "Daniel Fandiño",
         images: [
             {
