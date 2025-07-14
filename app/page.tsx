@@ -51,7 +51,7 @@ export default function Home() {
                 <meta property="og:description" content="Conoce los proyectos de Daniel Fandiño, desarrollador web full stack con experiencia en tecnologías modernas." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="landing-daniel.vercel.app" />
-                <meta property="og:image" content="landing-daniel.vercel.app/preview.jpg" />
+                <meta property="og:image" content="landing-daniel.vercel.app/preview.png" />
             </Head>
 
             <main className="min-h-screen bg-gray-100 text-gray-900 font-sans">
