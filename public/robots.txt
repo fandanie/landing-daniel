@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://landing-daniel.vercel.app
+
+# Sitemaps
+Sitemap: https://landing-daniel.vercel.app/sitemap.xml
