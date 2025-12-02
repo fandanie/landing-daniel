@@ -12,7 +12,10 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.23.3",
+<<<<<<< HEAD
     "groq-sdk": "^0.37.0",
+=======
+>>>>>>> 169dac085712e2a52af140ccd89ce6a2ec2bad6c
     "next": "15.3.5",
     "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
