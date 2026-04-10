@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 import Chatbot from "./components/chatbot";
 import Script from "next/script";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +26,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <GoogleAnalytics gaId="G-HC9Z6L2EC3" />
 
         {/* 🔽 GOOGLE ANALYTICS */}
+        
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-HC9Z6L2EC3"
           strategy="afterInteractive"
