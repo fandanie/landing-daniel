@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 import Chatbot from "./components/chatbot";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,17 +23,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <GoogleAnalytics gaId="G-HC9Z6L2EC3" />
-    
-        <Toaster position="top-center" reverseOrder={false} />
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-HC9Z6L2EC3"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-HC9Z6L2EC3');
+          `}
+          </Script>
+
+        
+          <Toaster position="top-center" reverseOrder={false} />
       
-        {children}
+          {children}
       
-        <Chatbot />
+          <Chatbot />
       
-      </body>
+        </body>
     </html>
   );
 }
