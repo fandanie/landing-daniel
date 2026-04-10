@@ -13,7 +13,7 @@
     "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.23.3",
     "groq-sdk": "^0.37.0",
-    "next": "15.3.5",
+    "next": "15.3.8",
     "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
