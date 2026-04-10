@@ -22,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+
+        {/* ✅ GOOGLE ANALYTICS (FORMA CORRECTA) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-HC9Z6L2EC3"
           strategy="afterInteractive"
@@ -35,11 +37,13 @@ export default function RootLayout({
             gtag('config', 'G-HC9Z6L2EC3');
           `}
         </Script>
-      </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+
         <Toaster position="top-center" reverseOrder={false} />
+
         {children}
+
         <Chatbot />
+
       </body>
     </html>
   );
